@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShowLv4ContentDto {
+
     private String lv4Id;
     private String content;
 }

@@ -14,7 +14,7 @@ public class ShowLv1Dto {
     private String zipsuStart;
     private String zipsuEnd;
     private String originalPublishYear;
-    private String buga;
-    private String buga;
+
+
 
 }
