@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TotalCountsResponse {
-    private Long totalCount;
-    private Long bookTitleCount;
-    private Long authorNameCount;
-    private Long contentCount;
+public class ChildLevel {
+    private String childId;
+    private String childTItle;
 }
