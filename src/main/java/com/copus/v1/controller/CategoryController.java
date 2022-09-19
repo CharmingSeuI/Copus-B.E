@@ -34,7 +34,7 @@ public class CategoryController {
         ChildLevelResponse childLevelResponse = new ChildLevelResponse();
 
         /**
-         * Level Tree : 가 - 저자 - 서지 - 권차 - 문체 - 최종정보보
+         * Level Tree : 가 - 저자 - 서지 - 권차 - 문체 - 최종정보
         * if Depth == 0:
          *      currentId == 가, 나, 다, ...
          *      ex. Child is Author Start with '가'
