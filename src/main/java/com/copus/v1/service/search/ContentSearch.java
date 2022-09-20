@@ -52,9 +52,10 @@ public class ContentSearch {
                     searchByLv4ContentDto.setLv1Id(lv1Id);
                     String lv1TitleChn = titleRepository.findLv1TitleByLv1Id(lv1Id).get(0).getTitleText();
                     String lv1TitleKor = titleRepository.findLv1TitleByLv1Id(lv1Id).get(1).getTitleText();
-                    searchByLv4ContentDto.setLv1TitleChn(lv1TitleKor+"("+lv1TitleChn+")");
-                    searchByLv4ContentDto.setAuthorChn(authorRepository.findAuthorNameByLv1Id(lv1Id).get(0).getNameChn());
-                    searchByLv4ContentDto.setAuthorKor(authorRepository.findAuthorNameByLv1Id(lv1Id).get(0).getNameKor());
+                    searchByLv4ContentDto.setLv1Title(lv1TitleKor+"("+lv1TitleChn+")");
+                    String authorChn=authorRepository.findAuthorNameByLv1Id(lv1Id).get(0).getNameChn();
+                    String authorKor=authorRepository.findAuthorNameByLv1Id(lv1Id).get(0).getNameKor();
+                    searchByLv4ContentDto.setAuthor(authorKor+"("+authorChn+")");
                     searchByLv4ContentDto.setOriginalPublishYear(publishInfoRepository.findPublishInfoByLv1Id(lv1Id).get(0).getOriginalPublishYear());
                     searchByLv4ContentDto.setLv2Id(lv2Id);
                     searchByLv4ContentDto.setLv2Title(titleRepository.findLv2TitleByLv2Id(lv2Id).get(0).getTitleText());

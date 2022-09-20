@@ -19,7 +19,7 @@ public class ShowMuncheService {
     private final TitleRepository titleRepository;
 
 
-    public ArrayList<ShowLv3Dto> searchLv3ByLv2Id(String level_2_id){
+    public ArrayList<ShowLv3Dto> showLv3ByLv2Id(String level_2_id){
 
 
         ArrayList<ShowLv3Dto> showLv3DtoList = new ArrayList<>();

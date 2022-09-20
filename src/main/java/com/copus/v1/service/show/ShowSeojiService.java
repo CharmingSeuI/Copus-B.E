@@ -20,17 +20,16 @@ public class ShowSeojiService implements ConsonantRangeSet {
 
     public final Lv1Repository lv1Repository;
     public final MainShow mainShow;
-    public ArrayList<ShowLv1Dto> searchLv1ByConsonant(String consonant) {
-        List<String> lv1IdList = new ArrayList<>();
+    public ArrayList<ShowLv1Dto> showLv1ByConsonant(String consonant) {
         String consonant1 = ConsonantRangeSet.consonantRange(consonant).get(0);
         String consonant2 = ConsonantRangeSet.consonantRange(consonant).get(1);
 
         List<Lv1> lv1List = lv1Repository.findLv1ByConsonant(consonant1, consonant2);
-        return mainShow.mainSearchByLv1(lv1List);
+        return mainShow.mainShowByLv1(lv1List);
     }
 
-    public ArrayList<ShowLv1Dto> searchLv1ByAuthorName(String author){
+    public ArrayList<ShowLv1Dto> showLv1ByAuthorName(String author){
         List<Lv1>lv1List=lv1Repository.findLv1ByAuthorName(author);
-        return mainShow.mainSearchByLv1(lv1List);
+        return mainShow.mainShowByLv1(lv1List);
                                                                                  }
 }

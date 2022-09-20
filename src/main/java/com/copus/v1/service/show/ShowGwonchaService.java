@@ -22,7 +22,7 @@ public class ShowGwonchaService {
     private final TitleRepository titleRepository;
 
 
-    public ArrayList<ShowLv2Dto> searchLv2ByLv1Id(String level_1_id) {
+    public ArrayList<ShowLv2Dto> showLv2ByLv1Id(String level_1_id) {
 
         ArrayList<ShowLv2Dto> showLv2DtoList = new ArrayList<>();
 

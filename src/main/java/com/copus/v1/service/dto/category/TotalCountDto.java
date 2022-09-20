@@ -15,6 +15,9 @@ public class TotalCountDto {
     private int totalCount;
     private int bookNameCount;
     private int authorNameCount;
+    private int gwonchaCount;
+    private int muncheCount;
+    private int finalTitleeCount;
     private int contentCount;
 
 }

@@ -23,7 +23,7 @@ public class MainShow {
     public final AuthorRepository authorRepository;
     public final PublishInfoRepository publishInfoRepository ;
 
-    public ArrayList<ShowLv1Dto> mainSearchByLv1(List<Lv1> lv1List) {
+    public ArrayList<ShowLv1Dto> mainShowByLv1(List<Lv1> lv1List) {
 
         List<String> lv1IdList = new ArrayList<>();
         for (Lv1 lv1 : lv1List) {
