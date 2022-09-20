@@ -28,12 +28,21 @@ class BookNameSearchServiceTest {
         String testItem2 = "조성가";
         String testItem3 = "趙性家";
 
+<<<<<<< HEAD
         ArrayList<ShowLv1Dto> id1 = showSeojiService.searchLv1ByConsonant("가");
         ArrayList<ShowLv1Dto> id2 = showSeojiService.searchLv1ByConsonant("아");
         ArrayList<ShowLv1Dto> id3 = showSeojiService.searchLv1ByConsonant("자");
         ArrayList<ShowLv1Dto> id4 = showSeojiService.searchLv1ByConsonant("힣");
         ArrayList<ShowLv1Dto> id5 = showSeojiService.searchLv1ByConsonant("a");
         ArrayList<ShowLv1Dto> id6 = showSeojiService.searchLv1ByAuthorName(testItem2);
+=======
+        ArrayList<ShowLv1Dto> id1 = showSeojiService.showLv1ByConsonant("가");
+        ArrayList<ShowLv1Dto> id2 = showSeojiService.showLv1ByConsonant("아");
+        ArrayList<ShowLv1Dto> id3 = showSeojiService.showLv1ByConsonant("자");
+        ArrayList<ShowLv1Dto> id4 = showSeojiService.showLv1ByConsonant("힣");
+        ArrayList<ShowLv1Dto> id5 = showSeojiService.showLv1ByConsonant("a");
+        ArrayList<ShowLv1Dto> id6 = showSeojiService.showLv1ByAuthorName(testItem2);
+>>>>>>> Feature_Category
 //        ArrayList<ArrayList<String>> id3 = bookNameSearchService.searchLv1ByAuthorName(testItem3);
 
 

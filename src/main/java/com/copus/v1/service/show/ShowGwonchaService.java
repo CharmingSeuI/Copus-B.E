@@ -22,7 +22,11 @@ public class ShowGwonchaService {
     private final TitleRepository titleRepository;
 
 
+<<<<<<< HEAD
     public ArrayList<ShowLv2Dto> searchLv2ByLv1Id(String level_1_id) {
+=======
+    public ArrayList<ShowLv2Dto> showLv2ByLv1Id(String level_1_id) {
+>>>>>>> Feature_Category
 
         ArrayList<ShowLv2Dto> showLv2DtoList = new ArrayList<>();
 

@@ -25,7 +25,11 @@ public class ShowFinalInfoService {
     private final ContentRepository contentRepository;
 
 
+<<<<<<< HEAD
     public ArrayList<ShowLv4Dto> searchLv4ByLv3Id(String level_3_id){
+=======
+    public ArrayList<ShowLv4Dto> showLv4ByLv3Id(String level_3_id){
+>>>>>>> Feature_Category
 
         ArrayList<ShowLv4Dto> showLv4DtoList = new ArrayList<>();
 

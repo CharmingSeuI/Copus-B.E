@@ -15,6 +15,12 @@ public class TotalCountDto {
     private int totalCount;
     private int bookNameCount;
     private int authorNameCount;
+<<<<<<< HEAD
+=======
+    private int gwonchaCount;
+    private int muncheCount;
+    private int finalTitleeCount;
+>>>>>>> Feature_Category
     private int contentCount;
 
 }
