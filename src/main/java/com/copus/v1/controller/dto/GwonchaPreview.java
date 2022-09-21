@@ -10,8 +10,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GwonchaData {
+public class GwonchaPreview {
     private String gwonchaId;
     private String gwonchaTitle;
-    private List<MuncheDataForGwonchaData> munches = new ArrayList<>();
+    private List<MunchePreivew> munches = new ArrayList<>();
 }

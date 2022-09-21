@@ -13,5 +13,5 @@ import java.util.List;
 public class GwonchaResponse {
     private String seojiId;
     private String seojiTitle;
-    private List<GwonchaData> datas = new ArrayList<>();
+    private List<GwonchaPreview> datas = new ArrayList<>();
 }

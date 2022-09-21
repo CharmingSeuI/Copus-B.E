@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MuncheDataForGwonchaData {
+public class MunchePreivew {
     private String muncheId;
     private String muncheTitle;
 }
