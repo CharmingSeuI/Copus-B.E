@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 public class PreviewResponse {
     private int count;
-    private List<PreviewDatas> datas = new ArrayList<>();
+    private List<SeojiPreview> datas = new ArrayList<>();
 }

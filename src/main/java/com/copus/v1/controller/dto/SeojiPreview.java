@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PreviewDatas {
+public class SeojiPreview {
     private String seojiId;
     private String seojiTitle;
     private String authorName;
