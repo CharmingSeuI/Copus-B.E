@@ -26,7 +26,6 @@ public class SearchByTotalService {
     private final Lv4Repository lv4Repository;
 
 
-    private final SearchByContentService searchByContentService;
     private final Lv1Search lv1Search;
     private final Lv2Search lv2Search;
     private final Lv3Search lv3Search;
