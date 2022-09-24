@@ -9,6 +9,7 @@ import com.copus.v1.repository.level.Lv2Repository;
 import com.copus.v1.repository.level.Lv3Repository;
 import com.copus.v1.repository.level.Lv4Repository;
 import com.copus.v1.service.dto.search.SearchByTotalDto;
+import com.copus.v1.service.dto.search.SearchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,42 +35,8 @@ public class SearchByTotalService {
     private final ContentSearch contentSearch;
     private final AuthorNameSearch authorNameSearch;
 
-    public SearchByTotalDto searchByTotal(String keyword) {
+    public SearchDto search(String filter, String keyword) {
 
-        SearchByTotalDto searchByTotalDto = new SearchByTotalDto();
-
-        List<Lv1> lv1List = lv1Repository.findLv1ByLv1Title(keyword);
-        if (lv1List.toArray().length != 0){
-            searchByTotalDto.setSearchByLv1TitleDto(lv1Search.lv1SearchByLv1(lv1List));
-        }
-
-        List<Lv1> lv1ListByAuthorName = lv1Repository.findLv1ByAuthorName(keyword);
-        if (lv1ListByAuthorName.toArray().length != 0){
-            searchByTotalDto.setSearchByAuthorNameDto(authorNameSearch.lv4SearchByAuthorName(lv1List));
-        }
-
-        List<Lv2> lv2List = lv2Repository.findLv2ByLv2Title(keyword);
-        if (lv2List.toArray().length != 0){
-            searchByTotalDto.setSearchByLv2TitleDto(lv2Search.lv2SearchByLv2(lv2List));
-        }
-
-        List<Lv3> lv3List = lv3Repository.findLv3ByLv3Title(keyword);
-        if (lv3List.toArray().length != 0){
-            searchByTotalDto.setSearchByLv3TitleDto(lv3Search.lv3SearchByLv3(lv3List));
-        }
-
-        List<Lv4> lv4List = lv4Repository.findLv4ByLv4Title(keyword);
-        if (lv4List.toArray().length != 0){
-            searchByTotalDto.setSearchByLv4TitleDto(lv4Search.lv4SearchByLv4(lv4List));
-        }
-
-        List<Lv4> lv4ListByContent = lv4Repository.findLv4ByContent(keyword);
-        if (lv4ListByContent.toArray().length != 0) {
-            searchByTotalDto.setSearchByLv4ContentDto(contentSearch.contentSearchByContent(lv4ListByContent));
-        }
-
-        return searchByTotalDto;
-        }
-
+    }
 
 }
