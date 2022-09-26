@@ -1,7 +1,5 @@
 package com.copus.v1.service;
 
-import com.copus.v1.service.dto.search.SearchByLv4ContentDto;
-import com.copus.v1.service.search.SearchByContentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

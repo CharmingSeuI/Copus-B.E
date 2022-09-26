@@ -21,10 +21,8 @@ public class ShowMuncheService {
 
 <<<<<<< HEAD
     public ArrayList<ShowLv3Dto> searchLv3ByLv2Id(String level_2_id){
-=======
-    public ArrayList<ShowLv3Dto> showLv3ByLv2Id(String level_2_id){
->>>>>>> Feature_Category
 
+    public ArrayList<ShowLv3Dto> showLv3ByLv2Id(String level_2_id){
 
         ArrayList<ShowLv3Dto> showLv3DtoList = new ArrayList<>();
 

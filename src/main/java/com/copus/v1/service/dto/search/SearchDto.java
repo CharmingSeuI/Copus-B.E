@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class SearchDto {
@@ -19,6 +21,7 @@ public class SearchDto {
     private String lv4Title;
     private String content;
 
+    private List<SearchDto> searchDtos;
     public SearchDto(String newLv1Id, String newLv1Title, String newAuthor, String newOriginalPublishYear, String newLv2Id, String newLv2Title, String newLv3Id, String newLv3Title, String newLv4Id, String newLv4Title, String newContent ){
         this.lv1Id = newLv1Id;
         this.lv1Title = newLv1Title;
