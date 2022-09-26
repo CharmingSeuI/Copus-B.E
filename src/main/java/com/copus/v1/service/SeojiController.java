@@ -1,10 +1,10 @@
 package com.copus.v1.service;
 
-import com.copus.v1.domain.info.meta.AuthorInfo;
-import com.copus.v1.domain.info.meta.MetaInfo;
-import com.copus.v1.domain.info.meta.PublishInfo;
+import com.copus.v1.domain.info.meta.*;
 import com.copus.v1.domain.level.Lv1;
 import com.copus.v1.repository.info.body.ContentRepository;
+import com.copus.v1.repository.info.meta.AuthorRepository;
+import com.copus.v1.repository.info.meta.PublishInfoRepository;
 import com.copus.v1.repository.info.meta.TitleRepository;
 import com.copus.v1.repository.level.Lv1Repository;
 import com.copus.v1.repository.level.Lv2Repository;
@@ -31,8 +31,8 @@ public class SeojiController {
     private final Lv3Repository lv3Repository;
     private final Lv4Repository lv4Repository;
     private final TitleRepository titleRepository;
-    private final PublishInfo publishInfo;
-    private final AuthorInfo authorInfo;
+    private final AuthorRepository authorRepository;
+    private final PublishInfoRepository publishInfoRepository;
     private final ContentRepository contentRepository;
 
     public void getCount() {
@@ -77,14 +77,56 @@ public class SeojiController {
     }
 
     private void getPreviewByLv1Id(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
-        Lv1 seoji = lv1Repository.findOne(keyword);
-        MetaInfo metaInfo = seoji.getMetaInfo();
+        List<Lv1> seojies = lv1Repository.findAllByIdKeyword(keyword);
+        for (Lv1 seoji : seojies) {
+            Long metaInfoId = seoji.getMetaInfo().getId();
 
+            String seojiTitle = getSeojiTitle(metaInfoId);
+
+            String authorName = getAuthorName(metaInfoId);
+
+            String publishYear = getPublishYear(metaInfoId);
+
+            seojiPreviewDtos.add(
+                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+                            null, null, null, null, null, null, null));
+        }
+
+    }
+
+    private String getPublishYear(Long metaInfoId) {
+        PublishInfo publishInfo = publishInfoRepository.findPublishInfoByMetaInfoId(metaInfoId);
+        String publishYear = publishInfo.getPublishYear();
+        return publishYear;
+    }
+
+    private String getAuthorName(Long metaInfoId) {
+        Author author = authorRepository.findAuthorByMetaInfoId(metaInfoId);
+        String authorName = author.concatNameKorAndChn();
+        return authorName;
+    }
+
+    private String getSeojiTitle(Long metaInfoId) {
+        List<Title> titles = titleRepository.findTitleByMetaInfoId(metaInfoId);
+        Title titleKor = titles.get(1);
+        Title titleChn = titles.get(0);
+        String seojiTitle = titleKor + "(" + titleChn + ")";
+        return seojiTitle;
     }
 
 
     private void getPreviewByLv2Id(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+        List<Lv1> seojies = lv1Repository.findAllByLv2IdKeyword(keyword);
+        lv2Repository.findOne(keyword);
+        for (Lv1 seoji : seojies) {
+            Long metaInfoId = seoji.getMetaInfo().getId();
 
+            String seojiTitle = getSeojiTitle(metaInfoId);
+            String authorName = getAuthorName(metaInfoId);
+            String publishYear = getPublishYear(metaInfoId);
+
+            String gwonchaId = keyword;
+        }
     }
 
 

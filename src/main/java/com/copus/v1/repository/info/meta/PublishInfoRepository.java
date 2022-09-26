@@ -21,6 +21,14 @@ public class PublishInfoRepository {
     }
 
 
+    public PublishInfo findPublishInfoByMetaInfoId(Long metaInfoId) {
+        return em.createQuery("""
+                        select p from PublishInfo pi
+                        where pi.metaInfo = :metaInfoId
+                        """, PublishInfo.class)
+                .setParameter("metaInfoId", metaInfoId)
+                .getSingleResult();
+    }
 }
 
 

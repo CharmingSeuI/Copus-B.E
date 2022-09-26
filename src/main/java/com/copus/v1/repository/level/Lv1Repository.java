@@ -1,6 +1,7 @@
 package com.copus.v1.repository.level;
 
 import com.copus.v1.domain.level.Lv1;
+import com.copus.v1.domain.level.Lv2;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,8 +13,23 @@ public class Lv1Repository {
     @PersistenceContext
     private EntityManager em;
 
-    public Lv1 findOne(String id) {
-        return em.find(Lv1.class, id);
+    public List<Lv1> findAllByIdKeyword(String keyword) {
+        return em.createQuery("""
+                        select l from Lv1 l
+                        where l.id = :keyword
+                        """, Lv1.class)
+                .setParameter("keyword", keyword)
+                .getResultList();
+    }
+
+    public List<Lv1> findAllByLv2IdKeyword(String lv2IdKeyword) {
+        return em.createQuery("""
+                        select l1 from Lv1 l1
+                        inner join Lv2 l2
+                        where l2.id = :keyword
+                        """, Lv1.class)
+                .setParameter("keyword", lv2IdKeyword)
+                .getResultList();
     }
 
     public List<Lv1> findLv1ByConsonant(String consonant1, String consonant2) {
@@ -24,6 +40,7 @@ public class Lv1Repository {
                 .setParameter("consonant2", consonant2)
                 .getResultList();
     }
+
     public List<Lv1> findLv1ByAuthorName(String authorname) {
         return em.createQuery("select l from Lv1 l join l.metaInfo ai " +
                         "where ai.id = any(select a.authorInfo.id from Author a where a.nameKor = :authorname or a.nameChn = :authorname)", Lv1.class)
@@ -37,5 +54,4 @@ public class Lv1Repository {
                 .setParameter("title", title)
                 .getResultList();
     }
-
 }

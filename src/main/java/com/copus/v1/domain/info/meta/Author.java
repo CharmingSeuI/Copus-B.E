@@ -46,4 +46,10 @@ public class Author {
         this.nickNameType = nickNameType;
         this.authorInfo = authorInfo;
     }
+
+    public String concatNameKorAndChn() {
+        if(nameKor == null) return nameChn;
+        if(nameChn == null) return nameKor;
+        return nameKor + "(" + nameChn + ")";
+    }
 }

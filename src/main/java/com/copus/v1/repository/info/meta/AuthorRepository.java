@@ -31,6 +31,16 @@ public class AuthorRepository {
                 .getResultList();
     }
 
+    public Author findAuthorByMetaInfoId(Long metaInfoId) {
+        return em.createQuery("""
+                        select a from Author a
+                        inner join AuthorInfo ai on ai = a.authorInfo
+                        inner join MetaInfo mi on mi = ai.metaInfo
+                        where mi.id = :metaInfoId
+                        """, Author.class)
+                .setParameter("metaInfoId", metaInfoId)
+                .getSingleResult();
+    }
 }
 
 
