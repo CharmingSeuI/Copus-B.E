@@ -30,7 +30,7 @@ public class Author {
     @Enumerated(value = EnumType.STRING)
     private NickNameType nickNameType;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_info_id")
     private AuthorInfo authorInfo;
 

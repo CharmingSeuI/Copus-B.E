@@ -12,6 +12,10 @@ public class Lv1Repository {
     @PersistenceContext
     private EntityManager em;
 
+    public Lv1 findOne(String id) {
+        return em.find(Lv1.class, id);
+    }
+
     public List<Lv1> findLv1ByConsonant(String consonant1, String consonant2) {
         return em.createQuery("select l from Lv1 l join l.metaInfo ti " +
                         "where ti.id = any(select t.titleInfo.id from Title t " +
