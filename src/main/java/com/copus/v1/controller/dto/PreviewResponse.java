@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiResponse {
+public class PreviewResponse {
     private int count;
-    private List<SeojiData> datas = new ArrayList<>();
+    private List<SeojiPreview> datas = new ArrayList<>();
 }
