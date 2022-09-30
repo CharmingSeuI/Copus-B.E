@@ -1,6 +1,5 @@
 package com.copus.v1.service;
 
-import com.copus.v1.domain.info.body.Content;
 import com.copus.v1.domain.info.meta.*;
 import com.copus.v1.domain.level.Lv1;
 import com.copus.v1.domain.level.Lv2;
@@ -14,9 +13,8 @@ import com.copus.v1.repository.level.Lv1Repository;
 import com.copus.v1.repository.level.Lv2Repository;
 import com.copus.v1.repository.level.Lv3Repository;
 import com.copus.v1.repository.level.Lv4Repository;
-import com.copus.v1.service.dto.SeojiFilter;
-import com.copus.v1.service.dto.SeojiPreviewDto;
-import com.copus.v1.service.exception.InvalidLevelIdException;
+import com.copus.v1.service.dto.SearchFilter;
+import com.copus.v1.service.dto.SearchPreviewDto;
 import com.copus.v1.service.exception.NoFilterForSeojiPreviewException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +26,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class SeojiController {
+public class SearchControllerService {
 
     private final Lv1Repository lv1Repository;
     private final Lv2Repository lv2Repository;
@@ -39,24 +37,25 @@ public class SeojiController {
     private final PublishInfoRepository publishInfoRepository;
     private final ContentRepository contentRepository;
 
-    public void getCount() {
-
+    public int getCount(List<SearchPreviewDto> searchPreviewDtos) {
+        int resultCount = searchPreviewDtos.size();
+        return resultCount;
     }
 
-    public List<SeojiPreviewDto> getPreview(SeojiFilter seojiFilter, String keyword) {
-        List<SeojiPreviewDto> seojiPreviewDtos = new ArrayList<>();
+    public List<SearchPreviewDto> getPreview(SearchFilter searchFilter, String keyword) {
+        List<SearchPreviewDto> searchPreviewDtos = new ArrayList<>();
         //Filter & keyword -> Find Lv1 Id
-        switch (seojiFilter) {
-            case dataId -> getPreviewByDataId(seojiPreviewDtos, keyword);
-            case content -> getPreviewByContent(seojiPreviewDtos, keyword);
-            case muncheTitle -> getPreviewByMuncheTitle(seojiPreviewDtos, keyword);
-            case gwonchaTitle -> getPreviewByGwonchaTitle(seojiPreviewDtos, keyword);
-            case authorName -> getPreviewByAuthorName(seojiPreviewDtos, keyword);
-            case bookTitle -> getPreviewByBookTitle(seojiPreviewDtos, keyword);
-            case total -> getPreviewByTotal(seojiPreviewDtos, keyword);
-            default -> throw new NoFilterForSeojiPreviewException("서지 프리뷰를 위한 필터가 존재하지 않습니다");
+        switch (searchFilter) {
+            case dataId -> getPreviewByDataId(searchPreviewDtos, keyword);
+            case content -> getPreviewByContent(searchPreviewDtos, keyword);
+            case muncheTitle -> getPreviewByMuncheTitle(searchPreviewDtos, keyword);
+            case gwonchaTitle -> getPreviewByGwonchaTitle(searchPreviewDtos, keyword);
+            case authorName -> getPreviewByAuthorName(searchPreviewDtos, keyword);
+            case bookTitle -> getPreviewByBookTitle(searchPreviewDtos, keyword);
+            case total -> getPreviewByTotal(searchPreviewDtos, keyword);
+            default -> throw new NoFilterForSeojiPreviewException("서치 프리뷰를 위한 필터가 존재하지 않습니다");
         }
-        return seojiPreviewDtos;
+        return searchPreviewDtos;
     }
 
     private Integer getLevelDepthByLevelId(String levelId) {
@@ -65,22 +64,22 @@ public class SeojiController {
                 .count() - 1);
     }
 
-    private void getPreviewByDataId(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByDataId(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         switch (getLevelDepthByLevelId(keyword)) {
             //서지 ID
-            case 1 -> getPreviewByLv1Id(seojiPreviewDtos, keyword);
+            case 1 -> getPreviewByLv1Id(searchPreviewDtos, keyword);
             //권차 ID
-            case 2 -> getPreviewByLv2Id(seojiPreviewDtos, keyword);
+            case 2 -> getPreviewByLv2Id(searchPreviewDtos, keyword);
             //문체 ID
-            case 3 -> getPreviewByLv3Id(seojiPreviewDtos, keyword);
+            case 3 -> getPreviewByLv3Id(searchPreviewDtos, keyword);
             //최종정보 ID
-            case 4 -> getPreviewByLv4Id(seojiPreviewDtos, keyword);
-            default -> throw new InvalidLevelIdException("해당 레벨 깊이는 존재하지 않습니다");
+            case 4 -> getPreviewByLv4Id(searchPreviewDtos, keyword);
+            //default -> throw new InvalidLevelIdException("해당 레벨 깊이는 존재하지 않습니다");
 
         }
     }
 
-    private void getPreviewByLv1Id(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByLv1Id(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv1> seojies = lv1Repository.findAllByIdKeyword(keyword);
         for (Lv1 seoji : seojies) {
             Long metaInfoId = seoji.getMetaInfo().getId();
@@ -91,8 +90,8 @@ public class SeojiController {
 
             String publishYear = getPublishYear(metaInfoId);
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
                             null, null, null, null, null, null, null));
         }
 
@@ -125,7 +124,7 @@ public class SeojiController {
         return gwonchaTitle;
     }
 
-    private void getPreviewByLv2Id(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByLv2Id(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv1> seojies = lv1Repository.findAllByLv2IdKeyword(keyword);
         Lv2 gwoncha = lv2Repository.findOne(keyword);
         for (Lv1 seoji : seojies) {
@@ -138,8 +137,8 @@ public class SeojiController {
             String gwonchaId = keyword;
             String gwonchaTitle = getTitleByMetaInfoId(gwoncha.getMetaInfo().getId());
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
                             gwonchaId, gwonchaTitle, null, null, null, null, null));
         }
     }
@@ -147,7 +146,7 @@ public class SeojiController {
 
 
 
-    private void getPreviewByLv3Id(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByLv3Id(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv1> seojies = lv1Repository.findAllByLv3IdKeyword(keyword);
         List<Lv2> gwonchas = lv2Repository.findAllByLv3IdKeyword(keyword);
 
@@ -166,14 +165,14 @@ public class SeojiController {
             String muncheId = keyword;
             String muncheTitle = getTitleByMetaInfoId(munche.getMetaInfo().getId());
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
                             gwonchaId, gwonchaTitle, muncheId, muncheTitle, null, null, null));
         }
     }
 
 
-    private void getPreviewByLv4Id(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByLv4Id(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv1> seojies = lv1Repository.findAllByLv4IdKeyword(keyword);
         List<Lv2> gwonchas = lv2Repository.findAllByLv4IdKeyword(keyword);
         List<Lv3> munches = lv3Repository.findAllByLv4IdKeyword(keyword);
@@ -196,14 +195,14 @@ public class SeojiController {
             String finalId = keyword;
             String finalTitle = getTitleByMetaInfoId(finalInfo.getMetaInfo().getId());
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
                             gwonchaId, gwonchaTitle, muncheId, muncheTitle, finalId, finalTitle, null));
         }
     }
 
 
-    private void getPreviewByContent(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByContent(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
 
         List<Lv4> finalInfos = lv4Repository.findAllByContentKeyword(keyword);
 
@@ -234,13 +233,13 @@ public class SeojiController {
                 content = content.substring(0,200);
             }
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seojies.get(0).getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seojies.get(0).getId(), seojiTitle, authorName, publishYear,
                             gwonchaId, gwonchaTitle, muncheId, muncheTitle, finalId, finalTitle, content));
         }
     }
 
-    private void getPreviewByMuncheTitle(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByMuncheTitle(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv3> munches = lv3Repository.findLv3ByLv3Title(keyword);
 
         for (Lv3 lv3 : munches) {
@@ -258,15 +257,15 @@ public class SeojiController {
             String gwonchaTitle = getTitleByMetaInfoId(gwonchas.get(0).getMetaInfo().getId());
 
             String muncheId = lv3.getId();
-            String muncheTitle = getTitleByMetaInfoId(munches.get(0).getMetaInfo().getId());
+            String muncheTitle = getTitleByMetaInfoId(lv3.getMetaInfo().getId());
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seojies.get(0).getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seojies.get(0).getId(), seojiTitle, authorName, publishYear,
                             gwonchaId, gwonchaTitle, muncheId, muncheTitle, null, null, null));
         }
     }
 
-    private void getPreviewByGwonchaTitle(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByGwonchaTitle(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv2> gwonchas = lv2Repository.findLv2ByLv2Title(keyword);
         System.out.println(gwonchas);
 
@@ -280,17 +279,17 @@ public class SeojiController {
             String authorName = getAuthorName(metaInfoId);
             String publishYear = getPublishYear(metaInfoId);
 
-            String gwonchaId = gwonchas.get(0).getId();
-            String gwonchaTitle = getTitleByMetaInfoId(gwonchas.get(0).getMetaInfo().getId());
+            String gwonchaId = lv2.getId();
+            String gwonchaTitle = getTitleByMetaInfoId(lv2.getMetaInfo().getId());
 
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seojies.get(0).getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seojies.get(0).getId(), seojiTitle, authorName, publishYear,
                             gwonchaId, gwonchaTitle, null, null, null, null, null));
         }
     }
 
-    private void getPreviewByAuthorName(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByAuthorName(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv1> seojies = lv1Repository.findLv1ByAuthorName(keyword);
         for (Lv1 seoji : seojies) {
             Long metaInfoId = seoji.getMetaInfo().getId();
@@ -301,13 +300,13 @@ public class SeojiController {
 
             String publishYear = getPublishYear(metaInfoId);
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
                             null, null, null, null, null, null, null));
         }
     }
 
-    private void getPreviewByBookTitle(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
+    private void getPreviewByBookTitle(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
         List<Lv1> seojies = lv1Repository.findLv1ByLv1Title(keyword);
         for (Lv1 seoji : seojies) {
             Long metaInfoId = seoji.getMetaInfo().getId();
@@ -318,14 +317,19 @@ public class SeojiController {
 
             String publishYear = getPublishYear(metaInfoId);
 
-            seojiPreviewDtos.add(
-                    new SeojiPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
+            searchPreviewDtos.add(
+                    new SearchPreviewDto(seoji.getId(), seojiTitle, authorName, publishYear,
                             null, null, null, null, null, null, null));
         }
     }
 
-    private void getPreviewByTotal(List<SeojiPreviewDto> seojiPreviewDtos, String keyword) {
-
+    private void getPreviewByTotal(List<SearchPreviewDto> searchPreviewDtos, String keyword) {
+        getPreviewByContent(searchPreviewDtos, keyword);
+        getPreviewByMuncheTitle(searchPreviewDtos, keyword);
+        getPreviewByGwonchaTitle(searchPreviewDtos, keyword);
+        getPreviewByAuthorName(searchPreviewDtos, keyword);
+        getPreviewByBookTitle(searchPreviewDtos, keyword);
+        getPreviewByDataId(searchPreviewDtos, keyword);
     }
 
     public void getArticle() {

@@ -14,6 +14,10 @@ public class Lv1Repository {
     @PersistenceContext
     private EntityManager em;
 
+    public List<Lv1> findAll() {
+        return em.createQuery("select l1 from Lv1 l1", Lv1.class).getResultList();
+    }
+
     public List<Lv1> findAllByIdKeyword(String keyword) {
         return em.createQuery("""
                         select l from Lv1 l
@@ -92,4 +96,6 @@ public class Lv1Repository {
                 .setParameter("title", title)
                 .getResultList();
     }
+
+
 }
