@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class FinalPreview {
-    private String finalId;
-    private String finalTitle;
+@NoArgsConstructor
+public class PreviewRequest {
+    private SearchFilter filter;
+    private String keyword;
 }
