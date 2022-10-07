@@ -16,6 +16,16 @@ public class Lv3Repository {
         return em.find(Lv3.class, keyword);
     }
 
+    public List<Lv3> findAllByLv2Id(String lv2Id) {
+        return em.createQuery("""
+                        select l3 from Lv3 l3
+                        inner join Lv2 l2 on l3.lv2 = l2
+                        where l2.id = :lv2Id
+                        """, Lv3.class)
+                .setParameter("lv2Id", lv2Id)
+                .getResultList();
+    }
+
     public List<Lv3> findAllByLv4IdKeyword(String lv4IdKeyword) {
         return em.createQuery("""
                         select l3 from Lv3 l3
@@ -49,9 +59,9 @@ public class Lv3Repository {
 
     }
 
-    public List<Lv3> findLv3ByLv3Id(String id) {
-        return em.createQuery("select l from Lv3 l where l.id =: id", Lv3.class)
-                .setParameter("id", id)
+    public List<Lv3> findAllByLv3IdKeyword(String keyword) {
+        return em.createQuery("select l from Lv3 l where l.id =: keyword", Lv3.class)
+                .setParameter("keyword", keyword)
                 .getResultList();
     }
 

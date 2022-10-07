@@ -1,8 +1,6 @@
 package com.copus.v1.repository.level;
 
 import com.copus.v1.domain.level.Lv1;
-import com.copus.v1.domain.level.Lv2;
-import com.copus.v1.domain.level.Lv4;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -17,8 +15,11 @@ public class Lv1Repository {
     public List<Lv1> findAll() {
         return em.createQuery("select l1 from Lv1 l1", Lv1.class).getResultList();
     }
+    public Lv1 findOne(String level_1_Id) {
+        return em.find(Lv1.class, level_1_Id);
+    }
 
-    public List<Lv1> findAllByIdKeyword(String keyword) {
+    public List<Lv1> findAllByLv1IdKeyword(String keyword) {
         return em.createQuery("""
                         select l from Lv1 l
                         where l.id = :keyword
@@ -74,12 +75,12 @@ public class Lv1Repository {
 
     }
 
-    public List<Lv1> findLv1ByConsonant(String consonant1, String consonant2) {
+    public List<Lv1> findLv1ByConsonant(String consonantStart, String consonantEnd) {
         return em.createQuery("select l from Lv1 l join l.metaInfo ti " +
                         "where ti.id = any(select t.titleInfo.id from Title t " +
                         "where t.type = '한글서명' and substring(t.titleText,1,1) between :consonant1 AND :consonant2)", Lv1.class)
-                .setParameter("consonant1", consonant1)
-                .setParameter("consonant2", consonant2)
+                .setParameter("consonant1", consonantStart)
+                .setParameter("consonant2", consonantEnd)
                 .getResultList();
     }
 
@@ -87,6 +88,13 @@ public class Lv1Repository {
         return em.createQuery("select l from Lv1 l join l.metaInfo ai " +
                         "where ai.id = any(select a.authorInfo.id from Author a where a.nameKor = :authorname or a.nameChn = :authorname)", Lv1.class)
                 .setParameter("authorname", authorname)
+                .getResultList();
+    }
+
+    public List<Lv1> findLv1ByAuthorId(Long authorId) {
+        return em.createQuery("select l from Lv1 l join l.metaInfo ai " +
+                        "where ai.id = any(select a.authorInfo.id from Author a where a.id = :authorId)", Lv1.class)
+                .setParameter("authorId", authorId)
                 .getResultList();
     }
 

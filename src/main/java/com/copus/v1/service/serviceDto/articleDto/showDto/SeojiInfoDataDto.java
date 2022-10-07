@@ -1,20 +1,17 @@
-package com.copus.v1.service.dto;
+package com.copus.v1.service.serviceDto.articleDto.showDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiInfoDto {
+public class SeojiInfoDataDto {
     private String seojiId;
     private String seojiTitle;
     private String authorName;
-    private String zipsuStart;
-    private String zipsuEnd;
+    private String zipsu;
     private String publishYear;
-
+    private SeojiInfoBugaDataDto buga;
 }

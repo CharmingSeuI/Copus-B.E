@@ -14,6 +14,14 @@ import java.util.List;
 public class TitleRepository {
     private final EntityManager em;
 
+    public List<Title> findAllLv3Title(){
+        return em.createQuery("select t from Title t" +
+                " inner join TitleInfo ti on t.titleInfo = ti" +
+                " inner join MetaInfo mi on ti.metaInfo = mi" +
+                " inner join Lv3 l3 on l3.metaInfo = mi ",Title.class).getResultList();
+    }
+
+
     public List<Title> findTitleByMetaInfoId(Long metaInfoId) {
         return em.createQuery("""
                         select t from Title t

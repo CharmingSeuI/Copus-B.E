@@ -14,9 +14,31 @@ import java.util.List;
 public class Lv2Repository {
     @PersistenceContext
     private EntityManager em;
-    public Lv2 findOne(String keyword) {
-        return em.find(Lv2.class, keyword);
+    public Lv2 findOne(String level_2_Id) {
+        return em.find(Lv2.class, level_2_Id);
     }
+
+    public List<Lv2> findAllByLv1Id(String lv1Id) {
+        return em.createQuery("""
+                        select l2 from Lv2 l2
+                        inner join Lv1 l1 on l2.lv1 = l1
+                        where l1.id = :lv1Id
+                        """, Lv2.class)
+                .setParameter("lv1Id", lv1Id)
+                .getResultList();
+    }
+
+    public List<Lv2> findAllByLv2IdKeyword(String keyword) {
+        return em.createQuery("""
+                        select l from Lv2 l
+                        where l.id = :keyword
+                        """, Lv2.class)
+                .setParameter("keyword", keyword)
+                .getResultList();
+    }
+
+
+
     public List<Lv2> findAllByLv3IdKeyword(String lv3IdKeyword) {
         return em.createQuery("""
                         select l2 from Lv2 l2

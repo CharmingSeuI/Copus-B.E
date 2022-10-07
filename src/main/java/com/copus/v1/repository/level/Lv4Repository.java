@@ -15,6 +15,22 @@ public class Lv4Repository {
     public Lv4 findOne(String keyword) {
         return em.find(Lv4.class, keyword);
     }
+    public List<Lv4> findAllByLv4IdKeyword(String keyword) {
+        return em.createQuery("select l from Lv4 l where l.id =: keyword", Lv4.class)
+                .setParameter("keyword", keyword)
+                .getResultList();
+    }
+
+    public List<Lv4> findAllByLv3Id(String lv3Id) {
+        return em.createQuery("""
+                        select l4 from Lv4 l4
+                        inner join Lv3 l3 on l4.lv3 = l3
+                        where l3.id = :lv3Id
+                        """, Lv4.class)
+                .setParameter("lv3Id", lv3Id)
+                .getResultList();
+    }
+
 
     public List<Lv4> findLv4ByLv3Title(String level_2_Title, String level_3_Title) {
         return em.createQuery("select l4 from Lv4 l4 join l4.lv3 l3 " +
