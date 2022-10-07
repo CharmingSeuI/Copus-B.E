@@ -9,6 +9,7 @@ import com.copus.v1.service.article.show.SeojiService;
 import com.copus.v1.service.enums.SearchFilter;
 import com.copus.v1.service.enums.SeojiKeyword;
 import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
+import com.copus.v1.service.serviceDto.articleDto.showDto.FinalInfoDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.GwonchaInfoDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.MuncheInfoDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
@@ -60,24 +61,7 @@ public class ArticleController {
 
     @GetMapping("/final/{id}")
     public FinalResponse getFinal(@PathVariable String id) {
-        FinalResponse finalResponse = new FinalResponse();
-
-        /**
-         * Final Data for Article
-         * @return{
-         * 	"seojiId":'',
-         * 	"seojiTitle":'',
-         * 	"gwonchaId":'',
-         * 	"gwonchaTitle":'',
-         * 	"muncheId":'',
-         * 	"muncheTitle":'',
-         * 	"final":{
-         * 		"title":'',
-         * 		"content":'',
-         *        }
-         * }
-         */
-
-        return finalResponse;
+        FinalInfoDto finalInfo = finalService.getFinalInfo(id);
+        return new FinalResponse(finalInfo);
     }
 }
