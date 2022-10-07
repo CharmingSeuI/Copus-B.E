@@ -1,4 +1,4 @@
-package com.copus.v1.service.dto;
+package com.copus.v1.service.serviceDto.articleDto.searchDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiPreviewDto {
+public class SearchPreviewDataDto {
     private String seojiId;
     private String seojiTitle;
     private String authorName;
