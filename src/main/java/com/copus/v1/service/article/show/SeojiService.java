@@ -29,7 +29,7 @@ public class SeojiService {
     private final GetMetaInfo getMetaInfo;
     private final ConsonantRangeSet consonantRangeSet;
 
-    public SeojiInfoDto getSeojiInfo(SeojiKeyword seojiKeyword, SeojiOrdering seojiOrdering, String keyword){
+    public SeojiInfoDto getSeojiInfo(SeojiKeyword seojiKeyword, String keyword){
         SeojiInfoDto seojiInfoDto = new SeojiInfoDto();
         List<SeojiInfoDataDto> seojiInfoDataDtos = new ArrayList<>();
         switch(seojiKeyword){

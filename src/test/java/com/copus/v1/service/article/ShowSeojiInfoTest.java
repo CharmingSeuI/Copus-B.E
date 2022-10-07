@@ -19,10 +19,10 @@ class ShowSeojiInfoTest {
 
         @Test
         void seaojiInfo(){
-           System.out.println("all:\n" + showSeojiInfo.getSeojiInfo(seojiKeyword.all, SeojiOrdering.none,"none"));
-           System.out.println("bookTitleConsonant:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.bookTitleConsonant, SeojiOrdering.none, "아"));
-           System.out.println("authorNameConsonant:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.authorNameConsonant, SeojiOrdering.none,"자"));
-           System.out.println("authorName:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.authorName, SeojiOrdering.none, "조성가"));
+           System.out.println("all:\n" + showSeojiInfo.getSeojiInfo(seojiKeyword.all, "none"));
+           System.out.println("bookTitleConsonant:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.bookTitleConsonant,  "아"));
+           System.out.println("authorNameConsonant:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.authorNameConsonant, "자"));
+           System.out.println("authorName:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.authorName, "조성가"));
 
         }
 

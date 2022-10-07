@@ -1,17 +1,23 @@
 package com.copus.v1.controller.dto;
 
-import lombok.AllArgsConstructor;
+import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDataDto;
+import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class SeojiResponse {
     private int count;
     private List<SeojiData> datas = new ArrayList<>();
+
+
+    public SeojiResponse(SeojiInfoDto seojiDto) {
+        count = seojiDto.getCount();
+        for (SeojiInfoDataDto data : seojiDto.getData()) {
+            datas.add(new SeojiData(data));
+        }
+    }
 }
 

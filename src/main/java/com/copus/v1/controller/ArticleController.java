@@ -7,7 +7,9 @@ import com.copus.v1.service.article.show.GwonchaService;
 import com.copus.v1.service.article.show.MuncheService;
 import com.copus.v1.service.article.show.SeojiService;
 import com.copus.v1.service.enums.SearchFilter;
+import com.copus.v1.service.enums.SeojiKeyword;
 import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
+import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,33 +31,8 @@ public class ArticleController {
 
     @GetMapping("/seoji")
     public SeojiResponse getSeoji(@ModelAttribute SeojiRequest seojiRequest) {
-        SeojiResponse seojiResponse = new SeojiResponse();
-
-        /**
-         * Data For Seojies Article
-         * @param keyword : 쿼리 검색용 키워드, value( all || 저자명 || 가나다 中 1 )
-         * @param ordering : 쿼리 페이징 키워드, value( none || author ||| book )
-         * @return{
-         * 	"count":'',
-         * 	"datas":[
-         *       {
-         * 		"seojiId":'',
-         * 		"seojiTitle":'',
-         * 		"authorName":'',
-         * 		"zipsuStart":'',
-         * 		"zipsuEnd":'',
-         * 		"publishYear":'',
-         * 		"buga":{
-         * 		//부가 정보 있을 시 value == 서지 ID
-         * 			"beomrye":'',
-         * 			"chapter":'', //목차
-         * 			"haejae":''
-         *            }
-         *      },...
-         * }
-         */
-
-        return seojiResponse;
+        SeojiInfoDto seojiDto = seojiService.getSeojiInfo(SeojiKeyword.valueOf(seojiRequest.getOrdering()), seojiRequest.getKeyword());
+        return new SeojiResponse(seojiDto);
     }
 
     @GetMapping("/gwoncha/{id}")
