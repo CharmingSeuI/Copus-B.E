@@ -1,13 +1,13 @@
-package com.copus.v1.controller.dto;
+package com.copus.v1.service.serviceDto.articleDto.showDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class FinalData {
-    private String title;
+@NoArgsConstructor
+public class FinalDataDto {
+    private String finalInfoTitle;
     private String content;
 }
