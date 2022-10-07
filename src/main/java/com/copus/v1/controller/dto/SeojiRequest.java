@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SeojiRequest {
-    // value type ==저자명 or 가나다 中 1
+    public String seojiKeyword;
     public String keyword;
-
-    public String ordering;
 }
 

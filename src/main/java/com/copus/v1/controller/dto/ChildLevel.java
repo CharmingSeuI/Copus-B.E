@@ -1,5 +1,6 @@
 package com.copus.v1.controller.dto;
 
+import com.copus.v1.service.dto.category.GetChildLevelDataDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,4 +11,9 @@ import lombok.NoArgsConstructor;
 public class ChildLevel {
     private String childId;
     private String childTItle;
+
+    public ChildLevel(GetChildLevelDataDto childData) {
+        this.childId = childData.getChildId();
+        this.childTItle = childData.getChildTitle();
+    }
 }

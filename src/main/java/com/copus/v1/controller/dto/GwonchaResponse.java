@@ -1,10 +1,8 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.showDto.DatasDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.GwonchaInfoDto;
-import lombok.AllArgsConstructor;
+import com.copus.v1.service.dto.article.DatasDto;
+import com.copus.v1.service.dto.article.GwonchaInfoDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;

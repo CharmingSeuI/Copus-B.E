@@ -1,4 +1,4 @@
-package com.copus.v1.service.serviceDto.articleDto.showDto;
+package com.copus.v1.service.dto.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FinalsDto {
-    private String finalInfoId;
+public class FinalDataDto {
     private String finalInfoTitle;
+    private String content;
 }

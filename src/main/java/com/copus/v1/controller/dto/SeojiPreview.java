@@ -1,6 +1,6 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDataDto;
+import com.copus.v1.service.dto.article.SearchPreviewDataDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

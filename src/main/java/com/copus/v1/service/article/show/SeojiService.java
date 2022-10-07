@@ -6,12 +6,11 @@ import com.copus.v1.repository.info.meta.AuthorRepository;
 import com.copus.v1.repository.level.Lv1Repository;
 import com.copus.v1.service.ConsonantRangeSet;
 import com.copus.v1.service.GetMetaInfo;
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoBugaDataDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDataDto;
+import com.copus.v1.service.dto.article.SeojiInfoBugaDataDto;
+import com.copus.v1.service.dto.article.SeojiInfoDataDto;
 
 import com.copus.v1.service.enums.SeojiKeyword;
-import com.copus.v1.service.enums.SeojiOrdering;
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
+import com.copus.v1.service.dto.article.SeojiInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

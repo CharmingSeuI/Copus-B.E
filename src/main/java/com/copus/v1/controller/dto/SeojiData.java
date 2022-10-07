@@ -1,6 +1,6 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDataDto;
+import com.copus.v1.service.dto.article.SeojiInfoDataDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

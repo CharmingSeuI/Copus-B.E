@@ -3,7 +3,6 @@ package com.copus.v1.service.article;
 import com.copus.v1.service.article.show.FinalService;
 import com.copus.v1.service.article.show.GwonchaService;
 import com.copus.v1.service.article.show.MuncheService;
-import com.copus.v1.service.article.show.ShowTotalGwonchaInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 class ShowLevelTest {
 
-    @Autowired
-    private ShowTotalGwonchaInfo showTotalGwonchaInfo;
     @Autowired
     private GwonchaService showGwonchaInfo;
     @Autowired

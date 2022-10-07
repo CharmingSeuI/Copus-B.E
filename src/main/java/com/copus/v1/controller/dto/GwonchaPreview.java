@@ -1,7 +1,7 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.showDto.DatasDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.MunchesDto;
+import com.copus.v1.service.dto.article.DatasDto;
+import com.copus.v1.service.dto.article.MunchesDto;
 import lombok.Data;
 
 import java.util.ArrayList;

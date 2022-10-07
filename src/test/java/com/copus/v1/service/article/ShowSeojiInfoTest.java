@@ -15,14 +15,12 @@ class ShowSeojiInfoTest {
     @Autowired
     private SeojiService showSeojiInfo;
 
-    private SeojiKeyword seojiKeyword;
-
         @Test
         void seaojiInfo(){
-           System.out.println("all:\n" + showSeojiInfo.getSeojiInfo(seojiKeyword.all, "none"));
-           System.out.println("bookTitleConsonant:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.bookTitleConsonant,  "아"));
-           System.out.println("authorNameConsonant:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.authorNameConsonant, "자"));
-           System.out.println("authorName:\n"+ showSeojiInfo.getSeojiInfo(seojiKeyword.authorName, "조성가"));
+           System.out.println("all:\n" + showSeojiInfo.getSeojiInfo(SeojiKeyword.all, "none"));
+           System.out.println("bookTitleConsonant:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.bookTitleConsonant,  "아"));
+           System.out.println("authorNameConsonant:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.authorNameConsonant, "자"));
+           System.out.println("authorName:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.authorName, "조성가"));
 
         }
 

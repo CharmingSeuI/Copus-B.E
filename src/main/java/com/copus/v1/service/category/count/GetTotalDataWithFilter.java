@@ -8,7 +8,7 @@ import com.copus.v1.repository.level.Lv1Repository;
 import com.copus.v1.repository.level.Lv2Repository;
 import com.copus.v1.repository.level.Lv3Repository;
 import com.copus.v1.repository.level.Lv4Repository;
-import com.copus.v1.service.serviceDto.categoryDto.count.GetTotalDataWithFilterDto;
+import com.copus.v1.service.dto.category.GetTotalDataWithFilterDto;
 import com.copus.v1.service.enums.SearchFilter;
 import com.copus.v1.service.exception.NoFilterForSeojiPreviewException;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class GetTotalDataWithFilter {
     private final Lv4Repository lv4Repository;
 
     public GetTotalDataWithFilterDto getSearchCount(SearchFilter searchFilter, String keyword) {
-        GetTotalDataWithFilterDto getTotalDataWithFilterDto = new GetTotalDataWithFilterDto(0,0,0,0,0,0,0);
+        GetTotalDataWithFilterDto getTotalDataWithFilterDto = new GetTotalDataWithFilterDto(0L, 0L, 0L, 0L, 0L,0L, 0L);
         switch (searchFilter) {
             case dataId -> getCountByDataId(getTotalDataWithFilterDto, keyword);
             case content -> getCountByContent(getTotalDataWithFilterDto, keyword);
@@ -64,57 +64,57 @@ public class GetTotalDataWithFilter {
 
     private void getCountByLv1Id(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv1> seojies = lv1Repository.findAllByLv1IdKeyword(keyword);
-        getTotalDataWithFilterDto.setDataIdCount(seojies.size());
+        getTotalDataWithFilterDto.setDataIdCount((long) seojies.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+seojies.size());
 
     }
 
     private void getCountByLv2Id(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv2> gwonchas = lv2Repository.findAllByLv2IdKeyword(keyword);
-        getTotalDataWithFilterDto.setDataIdCount(gwonchas.size());
+        getTotalDataWithFilterDto.setDataIdCount((long) gwonchas.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+gwonchas.size());
     }
 
 
     private void getCountByLv3Id(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv3> munches = lv3Repository.findAllByLv3IdKeyword(keyword);
-        getTotalDataWithFilterDto.setDataIdCount(munches.size());
+        getTotalDataWithFilterDto.setDataIdCount((long) munches.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+munches.size());
     }
 
     private void getCountByLv4Id(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv4> finalInfos = lv4Repository.findAllByLv4IdKeyword(keyword);
-        getTotalDataWithFilterDto.setDataIdCount(finalInfos.size());
+        getTotalDataWithFilterDto.setDataIdCount((long) finalInfos.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+finalInfos.size());
     }
 
     private void getCountByContent(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv4> finalInfos = lv4Repository.findAllByContentKeyword(keyword);
-        getTotalDataWithFilterDto.setContentCount(finalInfos.size());
+        getTotalDataWithFilterDto.setContentCount((long) finalInfos.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+finalInfos.size());
     }
 
     private void getCountByMuncheTitle(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv3> munches = lv3Repository.findLv3ByLv3Title(keyword);
-        getTotalDataWithFilterDto.setMuncheTitleCount(munches.size());
+        getTotalDataWithFilterDto.setMuncheTitleCount((long) munches.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+munches.size());
     }
 
     private void getCountByGwonchaTitle(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv2> gwonchas = lv2Repository.findLv2ByLv2Title(keyword);
-        getTotalDataWithFilterDto.setGwonchaTitleCount(gwonchas.size());
+        getTotalDataWithFilterDto.setGwonchaTitleCount((long) gwonchas.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+gwonchas.size());
     }
 
     private void getCountByAuthorName(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv1> seojies = lv1Repository.findLv1ByAuthorName(keyword);
-        getTotalDataWithFilterDto.setAuthorNameCount(seojies.size());
+        getTotalDataWithFilterDto.setAuthorNameCount((long) seojies.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+seojies.size());
     }
 
     private void getCountByBookTitle(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
         List<Lv1> seojies = lv1Repository.findLv1ByLv1Title(keyword);
-        getTotalDataWithFilterDto.setBookTitleCount(seojies.size());
+        getTotalDataWithFilterDto.setBookTitleCount((long) seojies.size());
         getTotalDataWithFilterDto.setTotalCount(getTotalDataWithFilterDto.getTotalCount()+seojies.size());
     }
 

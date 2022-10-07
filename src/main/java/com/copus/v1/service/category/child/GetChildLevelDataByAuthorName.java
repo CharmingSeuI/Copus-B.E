@@ -1,6 +1,6 @@
 package com.copus.v1.service.category.child;
 
-import com.copus.v1.service.serviceDto.categoryDto.child.GetChildLevelDataDto;
+import com.copus.v1.service.dto.category.GetChildLevelDataDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +16,9 @@ public class GetChildLevelDataByAuthorName {
     private final GetChildLevelData getChildLevelData;
 
 
-    public List<GetChildLevelDataDto> getChildDataByAuthorName(String parentId, int depth) {
+    public List<GetChildLevelDataDto> getChildDataByAuthorName(String parentId, Long depth) {
         List<GetChildLevelDataDto> getChildLevelDataDtos = new ArrayList<>();
-        switch (depth) {
+        switch (depth.intValue()) {
 
             case -1 -> getChildLevelData.getChildAuthorNameByConsonant(parentId, getChildLevelDataDtos);
             case 0 -> getChildLevelData.getChildLv1ByAuthorName(parentId, getChildLevelDataDtos);

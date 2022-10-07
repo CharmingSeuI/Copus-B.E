@@ -1,4 +1,4 @@
-package com.copus.v1.service.serviceDto.categoryDto.child;
+package com.copus.v1.service.dto.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

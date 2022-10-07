@@ -8,11 +8,11 @@ import com.copus.v1.service.article.show.MuncheService;
 import com.copus.v1.service.article.show.SeojiService;
 import com.copus.v1.service.enums.SearchFilter;
 import com.copus.v1.service.enums.SeojiKeyword;
-import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.FinalInfoDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.GwonchaInfoDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.MuncheInfoDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
+import com.copus.v1.service.dto.article.SearchPreviewDto;
+import com.copus.v1.service.dto.article.FinalInfoDto;
+import com.copus.v1.service.dto.article.GwonchaInfoDto;
+import com.copus.v1.service.dto.article.MuncheInfoDto;
+import com.copus.v1.service.dto.article.SeojiInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +28,15 @@ public class ArticleController {
 
     @GetMapping("/preview")
     public PreviewResponse getPreview(@ModelAttribute PreviewRequest previewRequest) {
+        System.out.println("previewRequest = " + previewRequest);
         SearchPreviewDto previewDto = searchPreview.getPreview(SearchFilter.valueOf(previewRequest.getFilter()), previewRequest.getKeyword());
+        System.out.println(previewDto);
         return new PreviewResponse(previewDto);
     }
 
     @GetMapping("/seoji")
     public SeojiResponse getSeoji(@ModelAttribute SeojiRequest seojiRequest) {
-        SeojiInfoDto seojiDto = seojiService.getSeojiInfo(SeojiKeyword.valueOf(seojiRequest.getOrdering()), seojiRequest.getKeyword());
+        SeojiInfoDto seojiDto = seojiService.getSeojiInfo(SeojiKeyword.valueOf(seojiRequest.getSeojiKeyword()), seojiRequest.getKeyword());
         return new SeojiResponse(seojiDto);
     }
 

@@ -1,6 +1,6 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.showDto.FinalDataDto;
+import com.copus.v1.service.dto.article.FinalDataDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

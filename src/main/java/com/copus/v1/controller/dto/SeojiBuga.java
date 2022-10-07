@@ -1,9 +1,7 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoBugaDataDto;
-import lombok.AllArgsConstructor;
+import com.copus.v1.service.dto.article.SeojiInfoBugaDataDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * All Fields Default == Null

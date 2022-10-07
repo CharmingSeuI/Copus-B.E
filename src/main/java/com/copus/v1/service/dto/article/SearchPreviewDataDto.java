@@ -1,21 +1,22 @@
-package com.copus.v1.service.serviceDto.articleDto.showDto;
+package com.copus.v1.service.dto.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MuncheInfoDto {
+public class SearchPreviewDataDto {
     private String seojiId;
     private String seojiTitle;
+    private String authorName;
+    private String publishYear;
     private String gwonchaId;
     private String gwonchaTitle;
+    private String muncheId;
     private String muncheTitle;
-    private List<FinalsDto> finals;
-
-
+    private String finalId;
+    private String finalTitle;
+    private String contentPartition;
 }

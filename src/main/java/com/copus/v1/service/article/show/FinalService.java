@@ -8,8 +8,8 @@ import com.copus.v1.repository.info.body.ContentRepository;
 
 import com.copus.v1.repository.level.Lv4Repository;
 import com.copus.v1.service.GetMetaInfo;
-import com.copus.v1.service.serviceDto.articleDto.showDto.FinalDataDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.FinalInfoDto;
+import com.copus.v1.service.dto.article.FinalDataDto;
+import com.copus.v1.service.dto.article.FinalInfoDto;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

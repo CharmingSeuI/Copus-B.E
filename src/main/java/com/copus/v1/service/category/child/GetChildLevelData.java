@@ -12,7 +12,7 @@ import com.copus.v1.repository.level.Lv3Repository;
 import com.copus.v1.repository.level.Lv4Repository;
 import com.copus.v1.service.ConsonantRangeSet;
 import com.copus.v1.service.GetMetaInfo;
-import com.copus.v1.service.serviceDto.categoryDto.child.GetChildLevelDataDto;
+import com.copus.v1.service.dto.category.GetChildLevelDataDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

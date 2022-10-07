@@ -11,8 +11,8 @@ import com.copus.v1.repository.level.Lv3Repository;
 import com.copus.v1.repository.level.Lv4Repository;
 import com.copus.v1.service.GetMetaInfo;
 import com.copus.v1.service.enums.SearchFilter;
-import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDataDto;
-import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
+import com.copus.v1.service.dto.article.SearchPreviewDataDto;
+import com.copus.v1.service.dto.article.SearchPreviewDto;
 import com.copus.v1.service.exception.NoFilterForSeojiPreviewException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -93,8 +93,6 @@ public class SearchPreview {
 
     }
 
-
-
     private void getPreviewByLv2Id(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
         List<Lv1> seojies = lv1Repository.findAllByLv2IdKeyword(keyword);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+seojies.size());
@@ -114,9 +112,6 @@ public class SearchPreview {
                             gwonchaId, gwonchaTitle, null, null, null, null, null));
         }
     }
-
-
-
 
     private void getPreviewByLv3Id(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
         List<Lv1> seojies = lv1Repository.findAllByLv3IdKeyword(keyword);
@@ -143,7 +138,6 @@ public class SearchPreview {
                             gwonchaId, gwonchaTitle, muncheId, muncheTitle, null, null, null));
         }
     }
-
 
     private void getPreviewByLv4Id(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
         List<Lv1> seojies = lv1Repository.findAllByLv4IdKeyword(keyword);

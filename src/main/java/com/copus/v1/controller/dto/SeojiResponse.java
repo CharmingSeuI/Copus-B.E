@@ -1,7 +1,7 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDataDto;
-import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
+import com.copus.v1.service.dto.article.SeojiInfoDataDto;
+import com.copus.v1.service.dto.article.SeojiInfoDto;
 import lombok.Data;
 
 import java.util.ArrayList;

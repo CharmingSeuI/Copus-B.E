@@ -1,4 +1,4 @@
-package com.copus.v1.service.serviceDto.articleDto.showDto;
+package com.copus.v1.service.dto.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiInfoDto {
+public class SearchPreviewDto {
     private int count;
-    private List<SeojiInfoDataDto> data;
+    private List<SearchPreviewDataDto> data;
 }

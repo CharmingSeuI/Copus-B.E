@@ -1,10 +1,8 @@
 package com.copus.v1.controller.dto;
 
-import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDataDto;
-import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
-import lombok.AllArgsConstructor;
+import com.copus.v1.service.dto.article.SearchPreviewDataDto;
+import com.copus.v1.service.dto.article.SearchPreviewDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
