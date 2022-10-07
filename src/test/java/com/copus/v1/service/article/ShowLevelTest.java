@@ -24,7 +24,7 @@ class ShowLevelTest {
 
         @Test
         void showLevel(){
-            System.out.println(showTotalGwonchaInfo.getTotalGwonchaInfo("ITKC_MO_1237A"));
+            System.out.println(showGwonchaInfo.getGwonchaInfoWithAllMunche("ITKC_MO_1237A"));
             System.out.println(showGwonchaInfo.getGwonchaInfo("ITKC_MO_1237A_0020"));
             System.out.println(showMuncheInfo.getMuncheInfo("ITKC_MO_1237A_0020_010"));
             System.out.println(showFinalInfo.getFinalInfo("ITKC_MO_1237A_0020_010_0010"));;

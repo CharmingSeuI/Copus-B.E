@@ -9,6 +9,7 @@ import com.copus.v1.service.article.show.SeojiService;
 import com.copus.v1.service.enums.SearchFilter;
 import com.copus.v1.service.enums.SeojiKeyword;
 import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
+import com.copus.v1.service.serviceDto.articleDto.showDto.GwonchaInfoDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -37,31 +38,17 @@ public class ArticleController {
 
     @GetMapping("/gwoncha/{id}")
     public GwonchaResponse getGwoncha(@PathVariable String id) {
-        GwonchaResponse gwonchaResponse = new GwonchaResponse();
+        GwonchaInfoDto gwonchaInfo;
+        if (getLevelOfId(id) == 1) gwonchaInfo = gwonchaService.getGwonchaInfoWithAllMunche(id);
+        else gwonchaInfo = gwonchaService.getGwonchaInfo(id);
+        return new GwonchaResponse(gwonchaInfo);
+    }
 
-        /**
-         * Gwoncha Data For  Article
-         * @param Gwoncha id
-         * @return
-         * {
-         * 	"seojiId":'',
-         * 	"seojiTitle":'',
-         * 	"datas":[
-         *                {
-         * 			"gwonchaId":'',
-         * 			"gwonchaTitle":'',
-         * 			"munches":[
-         *                    {
-         * 						"muncheId":'',
-         * 						"muncheTitle":'',
-         *                    },...
-         * 				]
-         *        },...
-         * 	]
-         * }
-         */
-
-        return gwonchaResponse;
+    private int getLevelOfId(String id) {
+        int level = Math.toIntExact(id.chars()
+                .filter(c -> c == '_')
+                .count() - 1);
+        return level;
     }
 
     @GetMapping("/munche/{id}")

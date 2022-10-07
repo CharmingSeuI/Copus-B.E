@@ -1,13 +1,15 @@
 package com.copus.v1.controller.dto;
 
-import lombok.AllArgsConstructor;
+import com.copus.v1.service.serviceDto.articleDto.showDto.MunchesDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class MunchePreview {
     private String muncheId;
     private String muncheTitle;
+
+    public MunchePreview(MunchesDto munche) {
+        muncheId = munche.getMuncheId();
+        muncheTitle = munche.getMuncheTitle();
+    }
 }
