@@ -10,6 +10,7 @@ import com.copus.v1.service.enums.SearchFilter;
 import com.copus.v1.service.enums.SeojiKeyword;
 import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.GwonchaInfoDto;
+import com.copus.v1.service.serviceDto.articleDto.showDto.MuncheInfoDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.SeojiInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -53,26 +54,8 @@ public class ArticleController {
 
     @GetMapping("/munche/{id}")
     public MuncheResponse getMunche(@PathVariable String id) {
-        MuncheResponse muncheResponse = new MuncheResponse();
-
-        /**
-         * Munche Data for Article
-         * @return{
-         * 	"seojiId":'',
-         * 	"seojiTitle":'',
-         * 	"gwonchaId":'',
-         * 	"gwonchaTitle":'',
-         * 	"muncheTitle":'',
-         * 	"finals":[
-         *                {
-         * 			"finalId":'',
-         * 			"finalTitle":'',
-         *        },...
-         * 	]
-         * }
-         */
-
-        return muncheResponse;
+        MuncheInfoDto muncheInfo = muncheService.getMuncheInfo(id);
+        return new MuncheResponse(muncheInfo);
     }
 
     @GetMapping("/final/{id}")

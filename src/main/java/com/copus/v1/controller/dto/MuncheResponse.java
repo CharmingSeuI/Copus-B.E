@@ -1,5 +1,7 @@
 package com.copus.v1.controller.dto;
 
+import com.copus.v1.service.serviceDto.articleDto.showDto.FinalsDto;
+import com.copus.v1.service.serviceDto.articleDto.showDto.MuncheInfoDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,15 @@ public class MuncheResponse {
     private String gwonchaTitle;
     private String muncheTitle;
     private List<FinalPreview> datas = new ArrayList<>();
+
+    public MuncheResponse(MuncheInfoDto muncheInfo) {
+        this.seojiId = muncheInfo.getSeojiId();
+        this.seojiTitle = muncheInfo.getSeojiTitle();
+        this.gwonchaId = muncheInfo.getGwonchaId();
+        this.gwonchaTitle = muncheInfo.getGwonchaTitle();
+        this.muncheTitle = muncheInfo.getMuncheTitle();
+        for (FinalsDto finalDto : muncheInfo.getFinals()) {
+            datas.add(new FinalPreview(finalDto));
+        }
+    }
 }
