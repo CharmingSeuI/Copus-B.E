@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.copus.v1.service.enums.SeojiKeyword.all;
+
 @SpringBootTest
 @Transactional
 class ShowSeojiInfoTest {
@@ -17,10 +19,10 @@ class ShowSeojiInfoTest {
 
         @Test
         void seaojiInfo(){
-           System.out.println("all:\n" + showSeojiInfo.getSeojiInfo(SeojiKeyword.all, "none"));
-           System.out.println("bookTitleConsonant:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.bookTitleConsonant,  "아"));
-           System.out.println("authorNameConsonant:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.authorNameConsonant, "자"));
-           System.out.println("authorName:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.authorName, "조성가"));
+           System.out.println("all:\n" + showSeojiInfo.getSeojiInfo(SeojiKeyword.valueOf("all"), "none"));
+           System.out.println("bookTitleConsonant:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.valueOf("bookTitleConsonant"),  "아"));
+           System.out.println("authorNameConsonant:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.valueOf("authorNameConsonant"), "자"));
+           System.out.println("authorName:\n"+ showSeojiInfo.getSeojiInfo(SeojiKeyword.valueOf("authorName"), "조성가"));
 
         }
 
