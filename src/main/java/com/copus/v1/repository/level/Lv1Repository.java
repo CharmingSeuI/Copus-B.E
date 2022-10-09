@@ -61,20 +61,6 @@ public class Lv1Repository {
                 .getResultList();
     }
 
-    public List<Lv1> findAllByContentKeyword(String contentKeyword) {
-        return em.createQuery("""
-                        select l1 from Lv1 l1
-                        inner join Lv2 l2
-                        inner join Lv3 l3
-                        inner join Lv4 l4
-                        inner join Content c  
-                        where c.contentText like concat('%',:contentKeyword,'%')
-                        """, Lv1.class)
-                .setParameter("contentKeyword", contentKeyword)
-                .getResultList();
-
-    }
-
     public List<Lv1> findLv1ByConsonant(String consonantStart, String consonantEnd) {
         return em.createQuery("select l from Lv1 l join l.metaInfo ti " +
                         "where ti.id = any(select t.titleInfo.id from Title t " +
@@ -91,6 +77,15 @@ public class Lv1Repository {
                 .getResultList();
     }
 
+    public List<Lv1> findLv1ByAuthorNameKeyword(String authorNameKeyword) {
+        return em.createQuery("select l from Lv1 l join l.metaInfo ai " +
+                        "where ai.id = any(select a.authorInfo.id from Author a " +
+                        "where a.nameKor like concat('%',:authorNameKeyword,'%') " +
+                        "or a.nameChn like concat('%',:authorNameKeyword,'%'))", Lv1.class)
+                .setParameter("authorNameKeyword", authorNameKeyword)
+                .getResultList();
+    }
+
     public List<Lv1> findLv1ByAuthorId(Long authorId) {
         return em.createQuery("select l from Lv1 l join l.metaInfo ai " +
                         "where ai.id = any(select a.authorInfo.id from Author a where a.id = :authorId)", Lv1.class)
@@ -98,10 +93,10 @@ public class Lv1Repository {
                 .getResultList();
     }
 
-    public List<Lv1> findLv1ByLv1Title(String title) {
+    public List<Lv1> findLv1ByLv1TitleKeyword(String titleKeyword) {
         return em.createQuery("select l from Lv1 l join l.metaInfo ti " +
-                        "where ti.id = any(select t.titleInfo.id from Title t where t.titleText =: title)", Lv1.class)
-                .setParameter("title", title)
+                        "where ti.id = any(select t.titleInfo.id from Title t where t.titleText like concat('%',:titleKeyword,'%'))", Lv1.class)
+                .setParameter("titleKeyword", titleKeyword)
                 .getResultList();
     }
 

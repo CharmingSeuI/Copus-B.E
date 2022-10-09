@@ -18,10 +18,10 @@ class SearchPreviewTest {
 
         @Test
         void searchController(){
-           System.out.println("bookTitle1:\n" + searchPreview.getPreview(SearchFilter.valueOf("bookTitle"), "月皐集"));
-           System.out.println("bookTitle2:\n"+ searchPreview.getPreview(SearchFilter.valueOf("bookTitle"), "월고집"));
-           System.out.println("authorName1:\n"+ searchPreview.getPreview(SearchFilter.valueOf("authorName"), "趙性家"));
-           System.out.println("authorName2:\n"+ searchPreview.getPreview(SearchFilter.valueOf("authorName"), "조성가"));
+           System.out.println("bookTitle1:\n" + searchPreview.getPreview(SearchFilter.valueOf("bookTitle"), "月"));
+           System.out.println("bookTitle2:\n"+ searchPreview.getPreview(SearchFilter.valueOf("bookTitle"), "월"));
+           System.out.println("authorName1:\n"+ searchPreview.getPreview(SearchFilter.valueOf("authorName"), "趙"));
+           System.out.println("authorName2:\n"+ searchPreview.getPreview(SearchFilter.valueOf("authorName"), "조"));
            System.out.println("gwonchaTitle:\n"+ searchPreview.getPreview(SearchFilter.valueOf("gwonchaTitle"), "月"));
            System.out.println("muncheTitle:\n"+ searchPreview.getPreview(SearchFilter.valueOf("muncheTitle"), "詩"));
            System.out.println("content:\n"+ searchPreview.getPreview(SearchFilter.valueOf("content"), "詩"));

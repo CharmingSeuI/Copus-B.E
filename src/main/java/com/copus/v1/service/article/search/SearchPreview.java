@@ -210,7 +210,7 @@ public class SearchPreview {
     }
 
     private void getPreviewByMuncheTitle(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
-        List<Lv3> munches = lv3Repository.findLv3ByLv3Title(keyword);
+        List<Lv3> munches = lv3Repository.findLv3ByLv3TitleKeyword(keyword);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+munches.size());
 
         for (Lv3 lv3 : munches) {
@@ -238,7 +238,7 @@ public class SearchPreview {
     }
 
     private void getPreviewByGwonchaTitle(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
-        List<Lv2> gwonchas = lv2Repository.findLv2ByLv2Title(keyword);
+        List<Lv2> gwonchas = lv2Repository.findLv2ByLv2TitleKeyword(keyword);
         System.out.println(gwonchas);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+gwonchas.size());
 
@@ -263,7 +263,7 @@ public class SearchPreview {
     }
 
     private void getPreviewByAuthorName(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
-        List<Lv1> seojies = lv1Repository.findLv1ByAuthorName(keyword);
+        List<Lv1> seojies = lv1Repository.findLv1ByAuthorNameKeyword(keyword);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+seojies.size());
         for (Lv1 seoji : seojies) {
             Long metaInfoId = seoji.getMetaInfo().getId();
@@ -281,7 +281,7 @@ public class SearchPreview {
     }
 
     private void getPreviewByBookTitle(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
-        List<Lv1> seojies = lv1Repository.findLv1ByLv1Title(keyword);
+        List<Lv1> seojies = lv1Repository.findLv1ByLv1TitleKeyword(keyword);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+seojies.size());
         for (Lv1 seoji : seojies) {
             Long metaInfoId = seoji.getMetaInfo().getId();

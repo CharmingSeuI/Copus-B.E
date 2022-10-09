@@ -1,9 +1,6 @@
 package com.copus.v1.repository.level;
 
-import com.copus.v1.domain.info.meta.StoreHouse;
-import com.copus.v1.domain.level.Lv1;
 import com.copus.v1.domain.level.Lv2;
-import com.copus.v1.domain.level.Lv3;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -59,14 +56,14 @@ public class Lv2Repository {
                 .setParameter("keyword", lv4IdKeyword)
                 .getResultList();
     }
-    public List<Lv2> findLv2ByLv2Title(String level_2_Title) {
+    public List<Lv2> findLv2ByLv2TitleKeyword(String level_2_TitleKeyword) {
         return em.createQuery("""
                         select l2 from Lv2 l2
                         inner join TitleInfo ti on ti.metaInfo = l2.metaInfo
                         inner join Title t on t.titleInfo = ti
-                        where t.titleText like concat('%',:level_2_Title,'%')
+                        where t.titleText like concat('%',:level_2_TitleKeyword,'%')
                         """, Lv2.class)
-                .setParameter("level_2_Title", level_2_Title)
+                .setParameter("level_2_TitleKeyword", level_2_TitleKeyword)
                 .getResultList();
     }
 
