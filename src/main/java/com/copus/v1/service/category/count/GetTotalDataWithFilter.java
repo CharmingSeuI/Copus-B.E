@@ -35,7 +35,7 @@ public class GetTotalDataWithFilter {
             case gwonchaTitle -> getCountByGwonchaTitle(getTotalDataWithFilterDto, keyword);
             case authorName -> getCountByAuthorName(getTotalDataWithFilterDto, keyword);
             case bookTitle -> getCountByBookTitle(getTotalDataWithFilterDto, keyword);
-            case total -> getCountByTotal(getTotalDataWithFilterDto, keyword);
+             case total -> getCountByTotal(getTotalDataWithFilterDto, keyword);
             default -> throw new NoFilterForSeojiPreviewException("검색결과 카운트를 위한 필터가 존재하지 않습니다");
         }
         return getTotalDataWithFilterDto;
@@ -125,6 +125,7 @@ public class GetTotalDataWithFilter {
         getCountByAuthorName(getTotalDataWithFilterDto, keyword);
         getCountByBookTitle(getTotalDataWithFilterDto, keyword);
         getCountByDataId(getTotalDataWithFilterDto, keyword);
+
     }
 
 }

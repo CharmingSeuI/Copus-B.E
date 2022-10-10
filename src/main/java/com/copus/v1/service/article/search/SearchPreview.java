@@ -239,7 +239,6 @@ public class SearchPreview {
 
     private void getPreviewByGwonchaTitle(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
         List<Lv2> gwonchas = lv2Repository.findLv2ByLv2TitleKeyword(keyword);
-        System.out.println(gwonchas);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+gwonchas.size());
 
         for (Lv2 lv2 : gwonchas) {
@@ -306,6 +305,5 @@ public class SearchPreview {
         getPreviewByBookTitle(searchPreviewDataDtos, keyword, searchPreviewDto);
         getPreviewByDataId(searchPreviewDataDtos, keyword, searchPreviewDto);
     }
-
 
 }
