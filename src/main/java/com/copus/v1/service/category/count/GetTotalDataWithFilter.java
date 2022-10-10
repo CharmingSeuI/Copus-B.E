@@ -119,6 +119,7 @@ public class GetTotalDataWithFilter {
     }
 
     private void getCountByTotal(GetTotalDataWithFilterDto getTotalDataWithFilterDto, String keyword) {
+
         getCountByContent(getTotalDataWithFilterDto, keyword);
         getCountByMuncheTitle(getTotalDataWithFilterDto, keyword);
         getCountByGwonchaTitle(getTotalDataWithFilterDto, keyword);
