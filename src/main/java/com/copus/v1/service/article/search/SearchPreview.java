@@ -170,7 +170,7 @@ public class SearchPreview {
     }
 
 
-    public void getPreviewByContent(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
+    private void getPreviewByContent(List<SearchPreviewDataDto> searchPreviewDataDtos, String keyword, SearchPreviewDto searchPreviewDto) {
 
         List<Lv4> finalInfos = lv4Repository.findAllByContentKeyword(keyword);
         searchPreviewDto.setCount(searchPreviewDto.getCount()+finalInfos.size());
