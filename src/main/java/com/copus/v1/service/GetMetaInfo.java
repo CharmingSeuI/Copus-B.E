@@ -54,8 +54,8 @@ public class GetMetaInfo {
 
     public String getTitleByMetaInfoId(Long metaInfoId) {
         List<Title> titles = titleRepository.findTitleByMetaInfoId(metaInfoId);
-        String gwonchaTitle = titles.get(0).getTitleText();
-        return gwonchaTitle;
+        String title = titles.get(0).getTitleText();
+        return title;
     }
 
     public String getZipsu(Long metaInfoId) {

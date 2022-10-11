@@ -18,6 +18,8 @@ class GetChildLevelDataTest {
     void child(){
         System.out.println(getChildLevelDataByAuthorName.getChildDataByAuthorName("자",-1L));
         System.out.println(getChildLevelDataByBookTItle.getChildDataByBookTitle("아",0L));
+        System.out.println(getChildLevelDataByAuthorName.getChildDataByAuthorName("all",-1L));
+        System.out.println(getChildLevelDataByBookTItle.getChildDataByBookTitle("all",0L));
     }
 
 }
