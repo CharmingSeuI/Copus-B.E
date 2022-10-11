@@ -1,6 +1,7 @@
 package com.copus.v1.service.category.child;
 
 import com.copus.v1.service.dto.category.GetChildLevelDataDto;
+import com.copus.v1.service.exception.InvalidLevelIdException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class GetChildLevelDataByAuthorName {
             case 1 -> getChildLevelData.getChildLv2ByLv1Id(parentId, getChildLevelDataDtos);
             case 2 -> getChildLevelData.getChildLv3ByLv2Id(parentId, getChildLevelDataDtos);
             case 3 -> getChildLevelData.getChildLv4ByLv3Id(parentId, getChildLevelDataDtos);
-            //default -> throw new InvalidLevelIdException("해당 레벨 깊이는 존재하지 않습니다");
+            default -> throw new InvalidLevelIdException("해당 레벨 깊이는 존재하지 않습니다");
         }
         return getChildLevelDataDtos;
     }

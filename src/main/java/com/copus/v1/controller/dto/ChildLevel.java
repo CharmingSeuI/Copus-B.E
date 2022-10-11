@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChildLevel {
     private String childId;
-    private String childTItle;
+    private String childTitle;
 
     public ChildLevel(GetChildLevelDataDto childData) {
         this.childId = childData.getChildId();
-        this.childTItle = childData.getChildTitle();
+        this.childTitle = childData.getChildTitle();
     }
 }
