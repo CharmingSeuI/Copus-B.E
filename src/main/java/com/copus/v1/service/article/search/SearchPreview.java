@@ -156,7 +156,7 @@ public class SearchPreview {
             String gwonchaId = gwonchas.get(0).getId();
             String gwonchaTitle = getMetaInfo.getTitleByMetaInfoId(gwonchas.get(0).getMetaInfo().getId());
 
-            String muncheId = keyword;
+            String muncheId = munches.get(0).getId();
             String muncheTitle = getMetaInfo.getTitleByMetaInfoId(munches.get(0).getMetaInfo().getId());
 
             String finalId = keyword;
@@ -191,7 +191,7 @@ public class SearchPreview {
             String gwonchaId = gwonchas.get(0).getId();
             String gwonchaTitle = getMetaInfo.getTitleByMetaInfoId(gwonchas.get(0).getMetaInfo().getId());
 
-            String muncheId = keyword;
+            String muncheId = munches.get(0).getId();
             String muncheTitle = getMetaInfo.getTitleByMetaInfoId(munches.get(0).getMetaInfo().getId());
 
             String finalId = lv4.getId();
