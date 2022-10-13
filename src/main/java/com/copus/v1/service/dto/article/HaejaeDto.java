@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiInfoBugaDataDto {
-    private String beomrye;
-    private String chapter;
+public class HaejaeDto {
+    private String seojiTitle;
     private String haejae;
 }

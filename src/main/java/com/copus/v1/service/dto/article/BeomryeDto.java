@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiInfoDataDto {
-    private String seojiId;
+public class BeomryeDto {
     private String seojiTitle;
-    private String authorName;
-    private String zipsu;
-    private String publishYear;
+    private String beomrye;
 }

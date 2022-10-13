@@ -2,17 +2,10 @@ package com.copus.v1.controller;
 
 import com.copus.v1.controller.dto.*;
 import com.copus.v1.service.article.search.SearchPreview;
-import com.copus.v1.service.article.show.FinalService;
-import com.copus.v1.service.article.show.GwonchaService;
-import com.copus.v1.service.article.show.MuncheService;
-import com.copus.v1.service.article.show.SeojiService;
+import com.copus.v1.service.article.show.*;
+import com.copus.v1.service.dto.article.*;
 import com.copus.v1.service.enums.SearchFilter;
 import com.copus.v1.service.enums.SeojiKeyword;
-import com.copus.v1.service.dto.article.SearchPreviewDto;
-import com.copus.v1.service.dto.article.FinalInfoDto;
-import com.copus.v1.service.dto.article.GwonchaInfoDto;
-import com.copus.v1.service.dto.article.MuncheInfoDto;
-import com.copus.v1.service.dto.article.SeojiInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +18,8 @@ public class ArticleController {
     private final GwonchaService gwonchaService;
     private final MuncheService muncheService;
     private final FinalService finalService;
+
+    private final BugaService bugaService;
 
     @GetMapping("/preview")
     public PreviewResponse getPreview(@ModelAttribute PreviewRequest previewRequest) {
@@ -66,4 +61,5 @@ public class ArticleController {
         FinalInfoDto finalInfo = finalService.getFinalInfo(id);
         return new FinalResponse(finalInfo);
     }
+
 }

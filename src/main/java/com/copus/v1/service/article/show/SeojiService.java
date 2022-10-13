@@ -6,7 +6,6 @@ import com.copus.v1.repository.info.meta.AuthorRepository;
 import com.copus.v1.repository.level.Lv1Repository;
 import com.copus.v1.service.ConsonantRangeSet;
 import com.copus.v1.service.GetMetaInfo;
-import com.copus.v1.service.dto.article.SeojiInfoBugaDataDto;
 import com.copus.v1.service.dto.article.SeojiInfoDataDto;
 
 import com.copus.v1.service.enums.SeojiKeyword;
@@ -51,14 +50,8 @@ public class SeojiService {
             String zipsu = getMetaInfo.getZipsu(metaInfoId);
             String publishYear = getMetaInfo.getPublishYear(metaInfoId);
 
-            //부가정보
-            String beomrye =  getMetaInfo.getBeomrye(seoji.getCommentaryInfo().getId());
-            String chapterInfo =  getMetaInfo.getChapterInfo(metaInfoId);
-            String haejae = getMetaInfo.getHaejae(seoji.getCommentaryInfo().getId());
-            ;
-
             seojiInfoDataDtos.add(
-                    new SeojiInfoDataDto(seoji.getId(), seojiTitle, authorName,zipsu,publishYear,new SeojiInfoBugaDataDto(beomrye, chapterInfo, haejae)));
+                    new SeojiInfoDataDto(seoji.getId(), seojiTitle, authorName,zipsu,publishYear));
         }
     }
 

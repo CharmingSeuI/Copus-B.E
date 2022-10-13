@@ -87,7 +87,7 @@ public class GetMetaInfo {
         return contentRepository.findCommentaryByCommentaryInfoId(commentaryInfoId, CommentType.간략해제).get(0).getContentText();
     }
 
-    public String getChapterInfo(Long metaInfoId){
+    public String getChapter(Long metaInfoId){
         return chapterInfoRepository.findChapterInfoByMetaInfoId(metaInfoId).get(0).getChapterInfoText();
     }
 

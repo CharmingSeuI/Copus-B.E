@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeojiInfoDataDto {
-    private String seojiId;
+public class ChapterDto {
     private String seojiTitle;
-    private String authorName;
-    private String zipsu;
-    private String publishYear;
+    private String chapter;
 }

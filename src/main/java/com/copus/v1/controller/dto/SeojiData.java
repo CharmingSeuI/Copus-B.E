@@ -14,7 +14,6 @@ public class SeojiData {
     private String authorName;
     private String zipsu;
     private String publishYear;
-    private SeojiBuga buga;
 
     public SeojiData(SeojiInfoDataDto data) {
         this.seojiId = data.getSeojiId();
@@ -22,7 +21,6 @@ public class SeojiData {
         this.authorName = data.getAuthorName();
         this.zipsu = data.getZipsu();
         this.publishYear = data.getPublishYear();
-        buga = new SeojiBuga(data.getBuga());
     }
 }
 
