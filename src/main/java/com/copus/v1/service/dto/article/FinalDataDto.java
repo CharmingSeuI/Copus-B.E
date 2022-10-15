@@ -13,5 +13,6 @@ import java.util.Optional;
 public class FinalDataDto {
     private String finalInfoTitle;
     private String content;
+    private String DCI;
     private Optional<List<AnnotationDto>> annotations;
 }

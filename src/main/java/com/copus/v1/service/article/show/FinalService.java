@@ -39,9 +39,9 @@ public class FinalService {
         String title = getMetaInfo.getTitleByMetaInfoId(finalInfo.getMetaInfo().getId());
         String content = contentRepository.findOneByBodyInfoId(finalInfo.getBodyInfo().getId()).get(0).getContentText();
         String DCI = finalInfo.getDCI();
-        Optional<List<AnnotationDto>> annotaions = Optional.ofNullable(getAnnotation(finalInfo));
+        Optional<List<AnnotationDto>> annotations = Optional.ofNullable(getAnnotation(finalInfo));
 
-        FinalDataDto finalDataDto = new FinalDataDto(title,content, annotaions);
+        FinalDataDto finalDataDto = new FinalDataDto(title, content, DCI, annotations);
 
         Lv3 munche = finalInfo.getLv3();
         String muncheId = munche.getId();
@@ -55,7 +55,7 @@ public class FinalService {
         String seojiId = seoji.getId();
         String seojiTitle = getMetaInfo.getSeojiTitleByMetaInfoId(seoji.getMetaInfo().getId());
 
-        return new FinalInfoDto(seojiId, seojiTitle, gwonchaId, gwonchaTitle, muncheId, muncheTitle, DCI, finalDataDto);
+        return new FinalInfoDto(seojiId, seojiTitle, gwonchaId, gwonchaTitle, muncheId, muncheTitle, finalDataDto);
     }
 
     private List<AnnotationDto> getAnnotation(Lv4 lv4){

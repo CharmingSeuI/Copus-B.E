@@ -10,11 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FinalData {
     private String title;
-    private String annotation;
     private String content;
+    private String DCI;
+    private String annotations;
+
 
     public FinalData(FinalDataDto finalData) {
         title = finalData.getFinalInfoTitle();
         content = finalData.getContent();
+        DCI = finalData.getDCI();
+        annotations = String.valueOf(finalData.getAnnotations());
     }
 }

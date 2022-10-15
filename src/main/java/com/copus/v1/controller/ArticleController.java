@@ -19,7 +19,6 @@ public class ArticleController {
     private final MuncheService muncheService;
     private final FinalService finalService;
 
-    private final BugaService bugaService;
 
     @GetMapping("/preview")
     public PreviewResponse getPreview(@ModelAttribute PreviewRequest previewRequest) {
