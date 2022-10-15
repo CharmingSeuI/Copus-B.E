@@ -14,5 +14,6 @@ public class FinalInfoDto {
     private String gwonchaTitle;
     private String muncheId;
     private String muncheTitle;
+    private String DCI;
     private FinalDataDto finalData;
 }
