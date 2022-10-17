@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class SeojiInfoDataDto {
     private String seojiId;
     private String seojiTitle;
+    private Long authorId;
     private String authorName;
     private String zipsu;
     private String publishYear;

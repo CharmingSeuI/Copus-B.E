@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class SeojiData {
     private String seojiId;
     private String seojiTitle;
+    private Long authorId;
     private String authorName;
     private String zipsu;
     private String publishYear;
@@ -18,6 +19,7 @@ public class SeojiData {
     public SeojiData(SeojiInfoDataDto data) {
         this.seojiId = data.getSeojiId();
         this.seojiTitle = data.getSeojiTitle();
+        this.authorId = data.getAuthorId();
         this.authorName = data.getAuthorName();
         this.zipsu = data.getZipsu();
         this.publishYear = data.getPublishYear();

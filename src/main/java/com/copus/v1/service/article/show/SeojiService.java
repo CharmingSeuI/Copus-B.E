@@ -46,12 +46,13 @@ public class SeojiService {
             Long metaInfoId = seoji.getMetaInfo().getId();
 
             String seojiTitle = getMetaInfo.getSeojiTitleByMetaInfoId(metaInfoId);
+            Long authorId = getMetaInfo.getAuthorId(metaInfoId);
             String authorName = getMetaInfo.getAuthorName(metaInfoId);
             String zipsu = getMetaInfo.getZipsu(metaInfoId);
             String publishYear = getMetaInfo.getPublishYear(metaInfoId);
 
             seojiInfoDataDtos.add(
-                    new SeojiInfoDataDto(seoji.getId(), seojiTitle, authorName,zipsu,publishYear));
+                    new SeojiInfoDataDto(seoji.getId(), seojiTitle,authorId,authorName,zipsu,publishYear));
         }
     }
 

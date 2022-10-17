@@ -36,6 +36,12 @@ public class GetMetaInfo {
         return authorName;
     }
 
+    public Long getAuthorId(Long metaInfoId) {
+        Author author = authorRepository.findAuthorByMetaInfoId(metaInfoId);
+        Long authorId = author.getId();
+        return authorId;
+    }
+
     public String getSeojiTitleByMetaInfoId(Long metaInfoId) {
         List<Title> titles = titleRepository.findTitleByMetaInfoId(metaInfoId);
         String titleKor = titles.get(1).getTitleText();
